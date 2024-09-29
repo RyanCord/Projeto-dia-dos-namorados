@@ -1,0 +1,509 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        function abrirJanela() {
+            window.open("https://www.youtube.com/watch?v=450p7goxZqg&list=RDQMiN1SvCzAWYc&start_radio=1");//use uma playlist de sua preferencia
+        }
+        function abrirJanela2() {
+            var janela = document.getElementById("janela");
+            janela.style.display = "block";
+        }
+
+        function fecharJanela() {
+            var janela = document.getElementById("janela");
+            janela.style.display = "none";
+        }
+
+    </script>
+    <style>
+        body {
+            background-color: red;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            position: relative;
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            background-color: #131d22;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 20px;       
+            left: 20px;           
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            background:url("https://i.pinimg.com/originals/51/43/52/514352b1bd85601df8f9f01762e22f25.png") no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+
+        .gallery {
+            display: flex;
+            height: 95vh;
+            padding: 3rem 1rem;
+            gap: 1rem;
+        }
+
+        .gallery-image {
+            flex: 1;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            transition: all .8s cubic-bezier(.25, .4, .45, 1.4);
+        }
+
+        .gallery-image:hover {
+            flex: 5;
+        }
+
+        .container h1 {
+            max-width: 100%;
+            max-height: 100%;
+            color: #ffffff;
+            height: 10vh;
+            margin-top: 30px;
+
+        }
+
+        .container h2 {
+            max-width: 100%;
+            max-height: 100%;
+            color: #ffffff;
+            height: 10vh;
+            font-size: xx-large;
+
+        }
+
+
+        .container button {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: #660000;
+            border: none;
+            color: rgb(255, 255, 255);
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            height: 10vh;
+
+        }
+
+        .container p {
+            font-size: larger;
+            color: aliceblue;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin-right: 50px;
+            margin-left: 50px;
+        }
+
+        .centralizar {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        .botao {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: #630000;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .janela {
+            width: 600px;
+            height: 400px;
+            background-color: rgb(24, 1, 1);
+            border: 2px solid #850202;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            margin: 20px auto;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        .coracao {
+            width: 200px;
+            height: 212px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #940000;
+            border-radius: 100px 100px 0 0;
+            animation: crescer 5s ease-in-out forwards;
+        }
+
+        .coracao:before,
+        .coracao:after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 290px;
+            top: -160px;
+            left: 0;
+            background-color: inherit;
+            border-radius: 100px 100px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 100% 100%;
+        }
+
+        .coracao:after {
+            left: auto;
+            right: 0;
+            transform: rotate(45deg);
+            transform-origin: 0 100%;
+        }
+
+        @keyframes crescer {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+            }
+
+            100% {
+                width: 120px;
+                height: 180x;
+                opacity: 1;
+            }
+        }
+
+        .card {
+            width: 400px;
+            aspect-ratio: 1.5;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .card .image-box {
+            position: relative;
+        }
+
+        .card .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease-in-out;
+        }
+
+        .card .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ffffff;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 2px solid white;
+            border-radius: inherit;
+            opacity: 0;
+            transition: 0.4s ease-in-out;
+        }
+
+        .card:hover img {
+            filter: grayscale(1) brightness(0.4);
+        }
+
+        .card:hover .content {
+            opacity: 1;
+            /* Quando passa o mouse no cartao, o texto torna-se visível */
+        }
+
+        .card:hover::after {
+            opacity: 1;
+            inset: 20px;
+        }
+
+        .card:hover .content h2 {
+            opacity: 1;
+        }
+
+        .card:hover .content p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card {
+            width: 400px;
+            aspect-ratio: 1.5;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .card .image-box {
+            position: relative;
+        }
+
+        .card .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease-in-out;
+        }
+
+        .card .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ffffff;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 2px solid white;
+            border-radius: inherit;
+            opacity: 0;
+            transition: 0.4s ease-in-out;
+        }
+
+        .card:hover img {
+            filter: grayscale(1) brightness(0.4);
+        }
+
+        .card:hover .content {
+            opacity: 1;
+
+        }
+
+        .card:hover::after {
+            opacity: 1;
+            inset: 20px;
+        }
+
+        .card:hover .content h2 {
+            opacity: 1;
+        }
+
+        .card:hover .content p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            /* Para deixar os cartões espaçados igualmente */
+            margin-top: 20px;
+        }
+
+        .card {
+            width: 400px;
+            aspect-ratio: 1.5;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            margin-right: 5px;
+
+        }
+
+        .card:last-child {
+            margin-right: 20;
+
+        }
+
+        .container p {
+            text-align: center;
+            font-size: larger;
+            color: aliceblue;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin-bottom: 20px;
+        }
+    </style>
+    <title>Titulo da pagina</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Modelo de site de dia dos namorados</h1>
+    </div>
+    <div class="container h2">
+        <h2>todas as imagens utilizadas são ilustrativas (adicione um h2 romantico aqui)</h2>
+    </div>
+    <div class="container button">
+        <button onclick="abrirJanela()">Use uma playlist de sua prefrencia</button>"
+    </div>
+    <div class="gallery">
+        <div class="gallery-image" style="background-image: url('https://bibliotecadopregador.com.br/wp-content/uploads/2023/05/casal-feliz.jpg')"></div>
+        <div class="gallery-image" style="background-image: url('https://images.pexels.com/photos/4014884/pexels-photo-4014884.jpeg?cs=srgb&dl=pexels-shvetsa-4014884.jpg&fm=jpg')"></div>
+        <div class="gallery-image" style="background-image: url('https://media.istockphoto.com/id/519361180/pt/foto/jovem-casal-feliz-ao-ar-livre-na-praia.jpg?s=1024x1024&w=is&k=20&c=0R5GgObTWoMRlO8H-mf_QbVfYIW0by8TDFcyDjP4-aA=')"></div>
+        <div class="gallery-image" style="background-image: url('https://images.pexels.com/photos/984934/pexels-photo-984934.jpeg?cs=srgb&dl=pexels-vera-arsic-304265-984934.jpg&fm=jpg')"></div>
+        <div class="gallery-image" style="background-image: url('https://media.istockphoto.com/id/929260516/pt/foto/happy-couple-moments-together.jpg?s=1024x1024&w=is&k=20&c=623IDU1AVnIbAzWMgLKrsGOs6Qkc8l-k9eaYKVI5F-g=')"></div>
+    </div>
+
+    <div class="container p">
+        <p>
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+            TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,TEXTO ILUSTRATIVO,
+        </p>
+    </div>
+
+    <div class="card-container">
+        <div class="column">
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://img.freepik.com/fotos-premium/casal-feliz-em-selfie-na-praia-com-ondas-ao-fundo-e-um-cenario-tropical-dia-dos-namorados_1167303-153.jpg">
+                </div>
+                <div class="content">
+                    <h2>TITULO</h2>
+                    <p>TEXTO ILUSTRATIVO.</p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://media.istockphoto.com/id/503617540/pt/foto/casal-feliz-no-amor.jpg?s=1024x1024&w=is&k=20&c=nvP0KopvqUtM2kazAYSUUQOGwzg3gRE9D7VFKvAlGfs=">
+                </div>
+                <div class="content">
+                    <h2>TITULO</h2>
+                    <p>TEXTO ILUSTRATIVO.</p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://static9.depositphotos.com/1101919/1136/i/450/depositphotos_11363417-stock-photo-romantic-scene-of-couples-on.jpg">
+                </div>
+                <div class="content">
+                    <h2>TITULO</h2>
+                    <p>TEXTO ILUSTRATIVO.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-container">
+        <div class="column">
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://media.istockphoto.com/id/488478998/pt/foto/casal-feliz-com-pequeno-filho-ao-p%C3%B4r-do-sol.jpg?s=612x612&w=0&k=20&c=rv2HEiGr-3zRelMv-dkMN9mQmhV_UADaPHCino_WhCI=">
+                </div>
+                <div class="content">
+                    <h2>TITULO</h2>
+                    <p>TEXTO ILUSTRATIVO.</p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzP1L8Ri45rufy5DI9mIjwJoPeCfiEzKdj4I3w50viW5fXKahohp1RY2ECqXnBHH6GsDs&usqp=CAU">
+                </div>
+                <div class="content">
+                    <h2>TITULO</h2>
+                    <p>TEXTO ILUSTRATIVO.</p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="image-box">
+                    <img src="memoria 6.jpeg">
+                </div>
+                <div class="content">
+                    <h2>TITULO</h2>
+                    <p>TEXTO ILUSTRATIVO.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="centralizar">
+        <button class="botao" onclick="abrirJanela2()">Clique aqui</button>
+        
+    </div>
+    
+    <div id="janela" class="janela">
+        <div class="coracao"></div>
+        <button onclick="fecharJanela()">Fechar Janela</button>
+    </div>
+    <div class="container">
+        <p>
+            Texto de rodapé para finalizar.
+        </p>
+    </div>
+
+
+</body>
+
+</html>
